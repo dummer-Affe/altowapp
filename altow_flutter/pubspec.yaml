@@ -1,0 +1,64 @@
+name: altow_projects
+description: A new Flutter project.
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  go_router: ^8.0.1
+  cupertino_icons: ^1.0.2
+  flutter_mobx: ^2.0.6+5
+  mobx: ^2.2.0
+  vexana: ^3.4.3
+  pinput: ^2.2.31
+  shared_preferences: ^2.1.2
+  json_serializable: ^6.7.0
+  json_annotation: ^4.8.1
+  dio: ^5.2.0+1
+  internet_connection_checker: ^1.0.0+1
+  get: ^4.6.5
+  intl_phone_number_field: ^0.1.4
+  device_preview: ^1.1.0
+  flutter_secure_storage: ^8.0.0
+  figma_to_flutter: ^0.0.1
+  rate: ^0.0.2
+  drop_shadow: ^0.1.0
+  page_transition: ^2.0.9
+  animated_bottom_navigation_bar: ^1.2.0
+  flutter_carousel_slider: ^1.1.0
+  liquid_pull_to_refresh: ^3.0.1
+  video_player: ^2.6.1
+  scroll_bottom_navigation_bar: ^4.0.0
+  url_launcher: ^6.1.11
+  webview_flutter: ^4.2.2
+  webview_flutter_android: ^3.8.0
+  cached_network_image: ^3.2.3
+  flutter_cache_manager: ^3.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+  build_runner: ^2.4.5
+  mobx_codegen: ^2.0.2
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/icons/
+    - assets/images/
+    - assets/images/homeJPG/
+    - assets/images/ueberUnsJPG/
+    - assets/images/jobsJPG/
+    - assets/images/altowAcademyJPG/
