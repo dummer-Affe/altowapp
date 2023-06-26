@@ -1,3 +1,6 @@
+import 'package:dio/dio.dart';
+import 'package:vexana/vexana.dart';
+
 import '/product/init/extensions/otp_path_enum.dart';
 import '/product/model/check_otp/check_otp_parameter.dart';
 import '/product/model/check_otp/check_otp_response.dart';
@@ -5,9 +8,6 @@ import '/product/model/check_user_necessary_send_otp/otp_checker_parameter.dart'
 import '/product/model/check_user_necessary_send_otp/otp_requirement_response.dart';
 import '/product/model/resend_otp/resend_otp_parameter.dart';
 import '/product/model/resend_otp/resend_otp_response.dart';
-import 'package:dio/dio.dart';
-import 'package:vexana/vexana.dart';
-
 import '../../init/enum/otp_services.dart';
 import '../../model/error/project_error_model.dart';
 import 'otp_service_io.dart';
@@ -61,8 +61,11 @@ class OTPService extends IOTPService {
       CheckOtpParameter parameter) async {
     try {
       final dio = Dio();
+      print(OtpPathEnum.checkOtp.fullPath);
+      print(parameter.toJson());
       final response = await dio.post(OtpPathEnum.checkOtp.fullPath,
           data: parameter.toJson());
+
       return ResponseModel<CheckOtpResponse?, ProjectErrorModel?>(
           data: response.data != null
               ? CheckOtpResponse.fromJson(response.data)

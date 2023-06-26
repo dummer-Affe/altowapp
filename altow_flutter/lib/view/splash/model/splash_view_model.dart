@@ -1,8 +1,8 @@
+import 'package:mobx/mobx.dart';
+
 import '/core/init/navigation/navigation_enums.dart';
 import '/core/init/navigation/navigation_service.dart';
 import '/core/states/app_settings/app_settings.dart';
-import 'package:mobx/mobx.dart';
-
 import '../../../core/states/app_user/app_user.dart';
 import '../../../product/init/enum/login_provider_type_enum.dart';
 import '../../tracker/user_login_or_register_tracker.dart';
@@ -23,6 +23,10 @@ abstract class _SplashViewModelBase with Store {
 
   Future<void> navigateToLogin() async {
     String? rememberedPhone = AppUser.instance.user?.mobilePhone;
+    print(AppUser.instance.user!.email);
+    print(AppUser.instance.user!.loginProviderToken);
+    print(AppUser.instance.user!.mobilePhone);
+    print(AppUser.instance.user!.password);
     if (rememberedPhone == null) {
       await NavigationService.pushRemoveUntil(NavigationEnums.login);
     } else {

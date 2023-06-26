@@ -2,13 +2,13 @@
 
 import 'dart:async';
 
-import '/product/init/extensions/response_model.dart'
-    as responseType;
-import '/product/service/otp/otp_service.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:vexana/vexana.dart';
 
+import '/product/init/extensions/response_model.dart'
+    as responseType;
+import '/product/service/otp/otp_service.dart';
 import '../../../core/states/app_settings/app_settings.dart';
 import '../../../product/model/check_otp/check_otp_parameter.dart';
 import '../../../product/model/check_user_necessary_send_otp/otp_checker_parameter.dart';
@@ -140,6 +140,7 @@ abstract class _OtpViewModelBase with Store {
         break;
     }
     var response = await _otpService.checkOtp(parameter);
+
     _changeLoading();
     switch (response.responseType) {
       case responseType.ResponseType.hasData:
