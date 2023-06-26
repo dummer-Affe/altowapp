@@ -1,16 +1,23 @@
-# altowinterview
+# Altow Flutter Application
 
-A new Flutter project.
+Altow full stack application that contains flutter and spring boot development.
+
+
+## Latest Updates:
+
+### 26/06/2023, 14:19  
+
+* Bug Fix: Problems that were preventing password renewal process have been fixed.
+* New Feature: At the start of the application the user that logged in already will be redirected to the password page.
+* New Feature: Services that is retrieving success stories and story details are now authorized through JWT. 
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Import Mysql dump file and build spring boot application. Then you are ready to use Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+This is the instructions for the application:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+https://raw.githubusercontent.com/dummer-Affe/altowapp/main/instructions.mp4
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:vexana/vexana.dart';
 
@@ -17,8 +19,11 @@ class OTPService extends IOTPService {
   Future<IResponseModel<OtpRequirementResponse?, ProjectErrorModel?>>
       checkUserNecessarySendOtp(OtpCheckerParameter parameter) async {
     try {
-      print("path:${OtpPathEnum.checkUserNecessarySendOtp.fullPath}");
-      print("parameter:${parameter.toJson()}");
+      printDetail(
+          path: OtpPathEnum.checkUserNecessarySendOtp.fullPath,
+          parameter: parameter,
+          method: RequestType.POST,
+          serviceName: "checkUserNecessarySendOtp");
       final dio = Dio();
 
       final response = await dio.post(
@@ -60,9 +65,12 @@ class OTPService extends IOTPService {
   Future<IResponseModel<CheckOtpResponse?, ProjectErrorModel?>> checkOtp(
       CheckOtpParameter parameter) async {
     try {
+      printDetail(
+          path: OtpPathEnum.checkOtp.fullPath,
+          parameter: parameter,
+          method: RequestType.POST,
+          serviceName: "checkOtp");
       final dio = Dio();
-      print(OtpPathEnum.checkOtp.fullPath);
-      print(parameter.toJson());
       final response = await dio.post(OtpPathEnum.checkOtp.fullPath,
           data: parameter.toJson());
 
@@ -102,6 +110,11 @@ class OTPService extends IOTPService {
   Future<IResponseModel<ResendOtpResponse?, ProjectErrorModel?>> resendOtp(
       ResendOtpParameter parameter) async {
     try {
+      printDetail(
+          path: OtpPathEnum.resendOtp.fullPath,
+          parameter: parameter,
+          method: RequestType.POST,
+          serviceName: "resendOtp");
       final dio = Dio();
       final response = await dio.post(OtpPathEnum.resendOtp.fullPath,
           data: parameter.toJson());
@@ -135,5 +148,21 @@ class OTPService extends IOTPService {
                 description: e.response?.statusMessage));
       }
     }
+  }
+
+  void printDetail(
+      {required String path,
+      required dynamic parameter,
+      required RequestType method,
+      required String serviceName}) {
+    print("--------------SERVICE DETAIL--------------");
+    print("SERVICE TO RUN: $serviceName");
+    print("SERVICE PATH: $path");
+    if (parameter != null) {
+      print(
+          "SERVICE PARAMETER: ${parameter is File ? parameter.path : parameter.toJson()}");
+    }
+    print("SERVICE METHOD: $method");
+    print("------------SERVICE DETAIL END------------");
   }
 }

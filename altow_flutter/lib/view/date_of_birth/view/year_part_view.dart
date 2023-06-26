@@ -1,8 +1,8 @@
-import '/core/states/app_colors/app_colors.dart';
 import 'package:figma_to_flutter/figma_to_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '/core/states/app_colors/app_colors.dart';
 import '../../../product/widgets/sized_button/sized_button.dart';
 import '../../../product/widgets/textfield/textfield.dart';
 
@@ -34,7 +34,7 @@ class _YearPartViewState extends State<YearPartView> {
   @override
   void initState() {
     widget.focusNode.addListener(() {
-      print("hasfocus:${widget.focusNode.hasFocus}");
+  
       if (!widget.focusNode.hasFocus) {
         if (controller.text.length < 4) {
           controller.clear();

@@ -41,7 +41,7 @@ abstract class _DateOfBirthViewModelBase with Store {
             duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
       }
       if (yearFocus.hasFocus) {
-        print("unfocus");
+       
         yearFocus.unfocus();
       }
     } else {

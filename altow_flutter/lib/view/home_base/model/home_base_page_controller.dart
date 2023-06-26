@@ -42,10 +42,10 @@ class HomeBasePageController extends GetxController {
       pageStack.removeLast();
       currentPage = pageStack.last;
       update();
-      print("true");
+    
       return false;
     } else {
-      print("false");
+ 
       return true;
     }
   }

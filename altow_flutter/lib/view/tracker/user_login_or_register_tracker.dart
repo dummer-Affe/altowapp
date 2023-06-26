@@ -95,26 +95,26 @@ class RegistrationTracker extends GetxController {
             }
             break;
           case ResponseType.errorModelWithData:
-            print("object");
+            
             ErrorBottomSheet.customView(
                 title: "Something Went Wrong",
                 message: "Something went wrong while connecting our servers",
                 context: context);
             break;
           case ResponseType.errorModelWithoutData:
-            print("object3");
+         
             ErrorBottomSheet.customView(
                 title: "Something Went Wrong",
                 message: "Something went wrong while connecting our servers",
                 context: context);
             break;
           case ResponseType.noConnection:
-            print("object2");
+        
             ErrorBottomSheet.listenConnection(
                 context: context, onConnected: () {});
             break;
           case ResponseType.unknown:
-            print("object1");
+            
             ErrorBottomSheet.unknownErr(context: context);
             break;
         }
@@ -147,15 +147,16 @@ class RegistrationTracker extends GetxController {
 
   Future<void> register({required BuildContext context}) async {
     if (type == ProviderType.mobile) {
-      await AppUser.instance
-          .register(AuthUser(mobilePhone: mobilePhone, email: email));
+      await AppUser.instance.register(
+          AuthUserInformations(mobilePhone: mobilePhone, email: email));
       RegistrationTracker.startLoginProcess(
           context: context,
           type: ProviderType.mobile,
           withoutOtp: true,
-          data: {'mobilePhone': mobilePhone});
+          data: {'mobilePhone': mobilePhone, 'email': email});
     } else {
-      await AppUser.instance.register(AuthUser(email: userInformation?.email));
+      await AppUser.instance
+          .register(AuthUserInformations(email: userInformation?.email));
     }
   }
 
@@ -257,6 +258,7 @@ class RegistrationTracker extends GetxController {
     instance.isRegistration = false;
     if (type == ProviderType.mobile) {
       instance.mobilePhone = data['mobilePhone'];
+      instance.email = data['email'];
       if (withoutOtp) {
         NavigationService.pushRemoveUntil(NavigationEnums.loginPassword);
       } else {
@@ -268,11 +270,17 @@ class RegistrationTracker extends GetxController {
 
   Future<void> login(
       {required String? token, required BuildContext context}) async {
-    if (type == ProviderType.mobile) {
-      await AppUser.instance
-          .login(AuthUser(loginProviderToken: token, mobilePhone: mobilePhone));
+    if (token == null) {
+      ErrorBottomSheet.unknownErr(context: context);
+      return;
     }
-    NavigationService.pushRemoveUntil(NavigationEnums.homebase);
+    if (type == ProviderType.mobile) {
+      await AppUser.instance.login(
+          informations:
+              AuthUserInformations(mobilePhone: mobilePhone, email: email),
+          token: token);
+      NavigationService.pushRemoveUntil(NavigationEnums.homebase);
+    }
   }
 
   Future<void> forgetPhone(BuildContext context) async {

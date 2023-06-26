@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:vexana/vexana.dart';
 
@@ -19,10 +21,13 @@ class GeneralService extends IGeneralService {
   Future<IResponseModel<LoginResponse?, ProjectErrorModel?>> login(
       LoginParameter parameter) async {
     try {
-      print(parameter.toJson());
-      print(GeneralPathEnum.login.fullPath);
+      printDetail(
+          path: GeneralPathEnum.login.fullPath,
+          parameter: parameter,
+          method: RequestType.GET,
+          serviceName: "login");
       final dio = Dio();
-      final response = await dio.post(GeneralPathEnum.login.fullPath,
+      final response = await dio.get(GeneralPathEnum.login.fullPath,
           data: parameter.toJson());
       return ResponseModel<LoginResponse?, ProjectErrorModel?>(
           data: response.data != null
@@ -60,8 +65,11 @@ class GeneralService extends IGeneralService {
   Future<IResponseModel<RenewPasswordResponse?, ProjectErrorModel?>>
       renewPassword(RenewPasswordParameter parameter) async {
     try {
-      print(parameter.toJson());
-      print(GeneralPathEnum.renewPassword.fullPath);
+      printDetail(
+          path: GeneralPathEnum.renewPassword.fullPath,
+          parameter: parameter,
+          method: RequestType.PUT,
+          serviceName: "renewPassword");
       final dio = Dio();
       final response = await dio.put(GeneralPathEnum.renewPassword.fullPath,
           data: parameter.toJson());
@@ -101,8 +109,11 @@ class GeneralService extends IGeneralService {
   Future<IResponseModel<RegisterResponse?, ProjectErrorModel?>> register(
       RegisterParameter parameter) async {
     try {
-      print(parameter.toJson());
-      print(GeneralPathEnum.register.fullPath);
+      printDetail(
+          path: GeneralPathEnum.register.fullPath,
+          parameter: parameter,
+          method: RequestType.POST,
+          serviceName: "register");
       final dio = Dio();
       final response = await dio.post(GeneralPathEnum.register.fullPath,
           data: parameter.toJson());
@@ -137,17 +148,20 @@ class GeneralService extends IGeneralService {
       }
     }
   }
-  
-   @override
+
+  @override
   Future<IResponseModel<CheckUserResponse?, ProjectErrorModel?>> checkUser(
       CheckUserParameter parameter) async {
     try {
-      print(parameter.toJson());
-      print(GeneralPathEnum.checkUser.fullPath);
+      printDetail(
+          path: GeneralPathEnum.checkUser.fullPath,
+          parameter: parameter,
+          method: RequestType.GET,
+          serviceName: "checkUser");
       final dio = Dio();
       final response = await dio.get(GeneralPathEnum.checkUser.fullPath,
           data: parameter.toJson());
-      
+
       return ResponseModel<CheckUserResponse?, ProjectErrorModel?>(
           data: response.data != null
               ? CheckUserResponse.fromJson(response.data)
@@ -178,5 +192,21 @@ class GeneralService extends IGeneralService {
                 description: e.response?.statusMessage));
       }
     }
+  }
+
+  void printDetail(
+      {required String path,
+      required dynamic parameter,
+      required RequestType method,
+      required String serviceName}) {
+    print("--------------SERVICE DETAIL--------------");
+    print("SERVICE TO RUN: $serviceName");
+    print("SERVICE PATH: $path");
+    if (parameter != null) {
+      print(
+          "SERVICE PARAMETER: ${parameter is File ? parameter.path : parameter.toJson()}");
+    }
+    print("SERVICE METHOD: $method");
+    print("------------SERVICE DETAIL END------------");
   }
 }

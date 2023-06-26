@@ -32,7 +32,7 @@ class _WebviewPageState extends State<WebviewPage> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.url);
+   
     var figma = Figma.of(context);
     return Scaffold(
       backgroundColor: Colors.white,

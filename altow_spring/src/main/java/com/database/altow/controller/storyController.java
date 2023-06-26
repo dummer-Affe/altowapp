@@ -29,7 +29,7 @@ public class storyController {
     }
 
     @GetMapping("/auth/success-stories/{id}")
-    //@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    //@PreAuthorize("hasAuthority('ROLE_USER')")
     public Story findStoryById(@PathVariable int id){
         return service.findStory(id);
     }

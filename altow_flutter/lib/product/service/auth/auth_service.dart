@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:vexana/vexana.dart';
 
 import '/product/init/enum/auth_path_enum.dart';
 import '/product/init/extensions/auth_path_extensions.dart';
 import '/product/service/auth/auth_service_io.dart';
+import '../../../core/states/app_user/app_user.dart';
 import '../../model/error/project_error_model.dart';
 import '../../model/success_stories_response/stories_response_model.dart';
 import '../../model/success_story_response/story_response_model.dart';
@@ -13,8 +16,13 @@ class AuthService extends IAuthService {
   Future<IResponseModel<SuccessStoriesResponse?, ProjectErrorModel?>>
       getStories() async {
     try {
-      print(AuthPathEnum.successStories.fullPath);
+      printDetail(
+          path: AuthPathEnum.successStories.fullPath,
+          parameter: null,
+          method: RequestType.GET,
+          serviceName: "getStories");
       final dio = Dio();
+      addAuthorization(dio);
       final response = await dio.get(AuthPathEnum.successStories.fullPath);
 
       return ResponseModel<SuccessStoriesResponse?, ProjectErrorModel?>(
@@ -55,10 +63,14 @@ class AuthService extends IAuthService {
       String id) async {
     try {
       final dio = Dio();
-      print("${AuthPathEnum.successStories.fullPath}/$id");
-      final response =
-          await dio.get("${AuthPathEnum.successStories.fullPath}/$id");
-
+      addAuthorization(dio);
+      String path = "${AuthPathEnum.successStories.fullPath}/$id";
+      printDetail(
+          path: path,
+          parameter: null,
+          method: RequestType.GET,
+          serviceName: "getStory");
+      final response = await dio.get(path);
       return ResponseModel<SuccessStoryResponse?, ProjectErrorModel?>(
           data: response.data != null
               ? SuccessStoryResponse.fromJson(response.data)
@@ -89,5 +101,26 @@ class AuthService extends IAuthService {
                 description: e.response?.statusMessage));
       }
     }
+  }
+
+  void addAuthorization(Dio dio) {
+    dio.options.headers["Authorization"] =
+        "Bearer ${AppUser.instance.loginProviderToken}";
+  }
+
+  void printDetail(
+      {required String path,
+      required dynamic parameter,
+      required RequestType method,
+      required String serviceName}) {
+    print("--------------SERVICE DETAIL--------------");
+    print("SERVICE TO RUN: $serviceName");
+    print("SERVICE PATH: $path");
+    if (parameter != null) {
+      print(
+          "SERVICE PARAMETER: ${parameter is File ? parameter.path : parameter.toJson()}");
+    }
+    print("SERVICE METHOD: $method");
+    print("------------SERVICE DETAIL END------------");
   }
 }

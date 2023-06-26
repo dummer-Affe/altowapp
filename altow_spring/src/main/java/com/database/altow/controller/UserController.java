@@ -69,7 +69,7 @@ public class UserController {
     }
 
 
-    @PostMapping("/public/login")
+    @GetMapping("/public/login")
     public Map<String,String> AuthAndGenerateToken(@RequestBody AuthRequest authRequest){
 
         Authentication authentication = authenticationManager.authenticate(

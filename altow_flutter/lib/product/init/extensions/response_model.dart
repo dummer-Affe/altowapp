@@ -6,7 +6,7 @@ extension IResponseModelExt on IResponseModel<dynamic, ProjectErrorModel?> {
   bool get hasError => error != null;
   bool get hasData => data != null;
   bool get hasErrorModel => error != null && error!.model != null;
-  bool get connectionError => error != null && error!.model!.noConnection;
+  bool get connectionError => hasErrorModel && error!.model!.noConnection;
   ProjectErrorModel? get errorModel =>
       error != null && error!.model != null ? error!.model : null;
 
@@ -14,6 +14,7 @@ extension IResponseModelExt on IResponseModel<dynamic, ProjectErrorModel?> {
     if (hasData) {
       return ResponseType.hasData;
     } else if (connectionError) {
+
       return ResponseType.noConnection;
     } else if (hasErrorModel) {
       var errorModel = error!.model!;
@@ -21,6 +22,7 @@ extension IResponseModelExt on IResponseModel<dynamic, ProjectErrorModel?> {
           ? ResponseType.errorModelWithoutData
           : ResponseType.errorModelWithData;
     } else {
+      
       return ResponseType.unknown;
     }
   }

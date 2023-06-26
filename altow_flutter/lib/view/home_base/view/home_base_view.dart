@@ -32,6 +32,7 @@ class _HomeBaseViewState extends State<HomeBaseView> {
 
   @override
   Widget build(BuildContext context) {
+    
     return GetBuilder<AppSettings>(builder: (controller) {
       return ContextUpdater(
         child: WillPopScope(
@@ -96,7 +97,7 @@ class _HomeBaseViewState extends State<HomeBaseView> {
   }
 
   void _onTap(index) {
-    print(index);
+   
     HomeBasePageController.instance.navigateToIndex(index);
   }
 }

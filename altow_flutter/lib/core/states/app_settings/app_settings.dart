@@ -1,12 +1,11 @@
-import '/product/service/otp/otp_service.dart';
 import 'package:figma_to_flutter/figma_design_io.dart';
 import 'package:figma_to_flutter/figma_to_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
-import '/core/states/app_user/app_user.dart';
 import '/product/service/auth/auth_service.dart';
+import '/product/service/otp/otp_service.dart';
 import '../../../product/service/general/general_service.dart';
 import '../../../product/utility/shared_manager.dart';
 import '../../init/navigation/navigation_enums.dart';
@@ -49,7 +48,6 @@ class AppSettings extends GetxController {
   static AppSettings get instance => Get.find<AppSettings>();
 
   Future<void> setup() async {
-    await AppUser.instance.checkAuth();
     await initSharedReferences();
     String? appearanceName = getAppearanceFromShared() ?? "light";
     if (appearanceName == "light") {

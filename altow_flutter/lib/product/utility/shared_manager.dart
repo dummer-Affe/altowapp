@@ -1,8 +1,10 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum SharedKeys {
-  appearance,
-}
+import '../../core/states/app_user/auth_user.dart';
+
+enum SharedKeys { appearance, authUser }
 
 class SharedPreferencesManager {
   SharedPreferences? preferences;
@@ -11,6 +13,27 @@ class SharedPreferencesManager {
 
   Future<void> init() async {
     preferences = await SharedPreferences.getInstance();
+  }
+
+  Future<void> setUserInformations(AuthUserInformations user) async {
+    final item = jsonEncode(user.toJson());
+    await saveString(SharedKeys.authUser, item);
+  }
+
+  Future<void> forgetUserInformations() async {
+    await removeItem(SharedKeys.authUser);
+  }
+
+  AuthUserInformations? getUserInformations() {
+    final itemEncoded = getString(SharedKeys.authUser);
+    if (itemEncoded == null) {
+      return null;
+    }
+    final json = jsonDecode(itemEncoded);
+    if (json is Map<String, dynamic>) {
+      return AuthUserInformations.fromJson(json);
+    }
+    return null;
   }
 
   Future<void> updateAppearance(String name) async {

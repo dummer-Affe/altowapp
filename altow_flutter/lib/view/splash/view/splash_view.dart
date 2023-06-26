@@ -38,7 +38,7 @@ class _SplashViewState extends State<SplashView> {
                 return model.isSetupCompleted
                     ? SplashAnimationView(
                         onFinishAnimation: () {
-                          model.navigateToLogin();
+                          model.checkAuth();
                         },
                         isFadeStart: true,
                       )

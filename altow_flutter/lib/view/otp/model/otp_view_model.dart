@@ -87,7 +87,7 @@ abstract class _OtpViewModelBase with Store {
                   phoneNumber: registrationTracker.mobilePhone));
     }
     _changeLoading();
-    print(response.responseType);
+
     switch (response.responseType) {
       case responseType.ResponseType.hasData:
         startTimer();
