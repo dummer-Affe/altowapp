@@ -12,9 +12,10 @@ class PageControlPanel extends StatelessWidget {
 
   final List<String> paths = [
     "IconPaths.home",
-    "IconPaths.cart",
-    "IconPaths.like",
-    "IconPaths.profile"
+    "IconPaths.successStories",
+    "IconPaths.academy",
+    "IconPaths.jobs"
+    "IconPaths.ueberuns"
   ];
 
   @override
