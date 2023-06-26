@@ -7,6 +7,7 @@ import 'package:mobx/mobx.dart';
 import '../../../core/init/navigation/navigation_enums.dart';
 import '../../../core/init/navigation/navigation_service.dart';
 import '../../../core/states/app_settings/app_settings.dart';
+import '../../../core/states/app_user/app_user.dart';
 import '../../../product/init/enum/login_provider_type_enum.dart';
 import '../../../product/model/check_user_necessary_send_otp/otp_checker_parameter.dart';
 import '../../tracker/user_login_or_register_tracker.dart';
@@ -65,7 +66,10 @@ abstract class _MobilePhoneNumberViewModelBase with Store {
             context: context,
             type: ProviderType.mobile,
             withoutOtp: false,
-            data: {'mobilePhone': mobilePhone.rawFullNumber});
+            data: {
+              'mobilePhone': mobilePhone.rawFullNumber,
+              'email': AppUser.instance.informations?.email
+            });
       } else {}
     }
   }

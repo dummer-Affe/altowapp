@@ -29,7 +29,7 @@ abstract class _SplashViewModelBase with Store {
           withoutOtp: true,
           data: {
             'mobilePhone': AppUser.instance.informations!.mobilePhone,
-            'email': AppUser.instance.informations!.email
+            'email': AppUser.instance.informations?.email
           });
     } else {
       await NavigationService.pushRemoveUntil(NavigationEnums.login);

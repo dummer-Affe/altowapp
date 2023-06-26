@@ -34,31 +34,32 @@ abstract class _LoginPasswordViewModelBase with Store {
         _changeLoading();
         var response = await AppSettings.instance.generalService.login(
             LoginParameter(username: tracker.mobilePhone, password: password));
+
         _changeLoading();
         switch (response.responseType) {
           case ResponseType.hasData:
             tracker.login(token: response.data!.token, context: context);
             break;
           case ResponseType.errorModelWithData:
-            ErrorBottomSheet.customView(
-                title: "Something Went Wrong",
-                message:
-                    "A problem was encountered while logging into the application.",
-                context: context);
+            errorPin = true;
             break;
+
           case ResponseType.errorModelWithoutData:
-            ErrorBottomSheet.customView(
-                title: "Something Went Wrong",
-                message:
-                    "A problem was encountered while logging into the application.",
-                context: context);
+            errorPin = true;
+            //ErrorBottomSheet.customView(
+            //    title: "Something Went Wrong",
+            //    message:
+            //        "A problem was encountered while logging into the application.",
+            //    context: context);
             break;
           case ResponseType.noConnection:
+          errorPin = true;
             ErrorBottomSheet.listenConnection(
                 context: context, onConnected: () {});
             break;
           case ResponseType.unknown:
-            ErrorBottomSheet.unknownErr(context: context);
+          errorPin = true;
+            //ErrorBottomSheet.unknownErr(context: context);
             break;
         }
       } else {
@@ -79,7 +80,6 @@ abstract class _LoginPasswordViewModelBase with Store {
   Future<void> forgetPassword(BuildContext context) async {
     var tracker = RegistrationTracker.instance;
 
-    
     var response = await AppSettings.instance.otpService
         .checkUserNecessarySendOtp(
             OtpCheckerParameter.newPassword(mobilePhone: tracker.mobilePhone));

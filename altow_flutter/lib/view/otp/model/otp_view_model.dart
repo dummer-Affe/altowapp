@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:vexana/vexana.dart';
 
-import '/product/init/extensions/response_model.dart'
-    as responseType;
+import '/product/init/extensions/response_model.dart' as responseType;
 import '/product/service/otp/otp_service.dart';
 import '../../../core/states/app_settings/app_settings.dart';
 import '../../../product/model/check_otp/check_otp_parameter.dart';
@@ -87,7 +86,6 @@ abstract class _OtpViewModelBase with Store {
                   phoneNumber: registrationTracker.mobilePhone));
     }
     _changeLoading();
-
     switch (response.responseType) {
       case responseType.ResponseType.hasData:
         startTimer();
@@ -150,10 +148,11 @@ abstract class _OtpViewModelBase with Store {
         errorText = errorText ?? "Please enter the code sent!";
         break;
       case responseType.ResponseType.errorModelWithoutData:
-        ErrorBottomSheet.customView(
-            title: "Something Went Wrong",
-            message: "Something went wrong while sending otp",
-            context: context);
+        errorText = "Please enter the code sent!";
+        //ErrorBottomSheet.customView(
+        //    title: "Something Went Wrong",
+        //    message: "Something went wrong while sending otp",
+        //    context: context);
         break;
       case responseType.ResponseType.noConnection:
         ErrorBottomSheet.listenConnection(context: context, onConnected: () {});
