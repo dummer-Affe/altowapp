@@ -1,10 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
 
-import '/product/model/register/register_parameter.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../core/extensions/regex_constants.dart';
+import '/product/model/register/register_parameter.dart';
+import '../../../core/constants/regex_constants.dart';
 import '../../../core/init/navigation/navigation_enums.dart';
 import '../../../core/states/app_settings/app_settings.dart';
 import '../../../product/init/extensions/response_model.dart';

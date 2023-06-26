@@ -6,7 +6,9 @@ import com.database.altow.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -23,9 +25,9 @@ public class UserService {
     public UserInfo checkUser (phoneNumber phoneNumber){
         return repository.findByMobilePhone(phoneNumber.getPhoneNumber());
     }
-    public UserInfo updateUserPassword(UserInfo user ){
-        UserInfo existingUser= repository.findByMobilePhone(user.getMobilePhone());
-        existingUser.setPassword(encoder.encode(user.getPassword()));
+    public UserInfo updateUserPassword(@RequestBody Map<String, String> numberPassword){
+        UserInfo existingUser= repository.findByMobilePhone(numberPassword.get("mobileNumber"));
+        existingUser.setPassword(encoder.encode(numberPassword.get("password")));
         return  repository.save(existingUser);
     }
     public void removeUserByUser (int id){

@@ -38,9 +38,10 @@ public class UserController {
         return response;
     }
     @PutMapping("/public/renew-password")
-    public UserInfo updateUserPassword(@RequestBody UserInfo user){
-        return userService.updateUserPassword(user);
+    public UserInfo updateUserPassword(@RequestBody Map<String, String> numberPassword){
+        return userService.updateUserPassword(numberPassword);
     }
+
     @DeleteMapping("/public/user/delete/{id}")
     public Map<String,Object > removeUserByUser(@PathVariable int id){
         userService.removeUserByUser(id);

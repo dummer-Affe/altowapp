@@ -63,7 +63,7 @@ class GeneralService extends IGeneralService {
       print(parameter.toJson());
       print(GeneralPathEnum.renewPassword.fullPath);
       final dio = Dio();
-      final response = await dio.post(GeneralPathEnum.renewPassword.fullPath,
+      final response = await dio.put(GeneralPathEnum.renewPassword.fullPath,
           data: parameter.toJson());
       return ResponseModel<RenewPasswordResponse?, ProjectErrorModel?>(
           data: response.data != null

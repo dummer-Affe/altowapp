@@ -1,4 +1,4 @@
-import 'regex_constants.dart';
+import '../constants/regex_constants.dart';
 
 extension StringValidator on String {
   String? get isValidEmail {
