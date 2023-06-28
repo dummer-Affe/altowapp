@@ -1,12 +1,11 @@
 package com.database.altow.controller;
 import com.database.altow.dto.AuthRequest;
-import com.database.altow.entity.Story;
 import com.database.altow.entity.UserInfo;
 import com.database.altow.entity.phoneNumber;
+import com.database.altow.exception.CheckOtpException;
 import com.database.altow.exception.UserNotFoundException;
 import com.database.altow.service.JwtService;
 import com.database.altow.service.UserService;
-import org.hibernate.annotations.SortComparator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,8 +15,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @RestController
 public class UserController {
@@ -111,5 +110,37 @@ public class UserController {
         }
 
     }
+    @PostMapping("/public/check-otp")
+    public ResponseEntity<Map<String,Object>>  CheckUserOtp(@RequestBody Map<String,String> otpCode) throws CheckOtpException {
+            if(Objects.equals(otpCode.get("otpCode"), "123456")){
+                Map<String, Object> response = new HashMap<>();
+                response.put("status", "success");
+                response.put("message", "success");
+                response.put("data", true);
+                return ResponseEntity.ok(response);
+            }else {
+                throw new CheckOtpException();
+            }
+    }
 
-}
+    @PostMapping("public/send-otp")
+    public ResponseEntity<Map<String,Object>>  sendOtp(@RequestBody Map<String,String> otpCode) throws CheckOtpException {
+        Map<String, Object> response = new HashMap<>();
+        response.put("status", "success");
+        response.put("message", "success");
+        response.put("data", true);
+        return ResponseEntity.ok(response);
+
+    }
+    @PostMapping ("public/re-send-otp")
+    public ResponseEntity<Map<String,Object>>  reSendOtp(@RequestBody Map<String,String> otpCode) throws CheckOtpException {
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("status", "success");
+        response.put("message", "success");
+        response.put("data", true);
+        return ResponseEntity.ok(response);
+
+    }
+
+    }

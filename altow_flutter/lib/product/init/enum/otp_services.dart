@@ -1,5 +1,5 @@
 enum OtpPathEnum {
-  checkUserNecessarySendOtp,
+  sendOtp,
   checkOtp,
   resendOtp,
 }

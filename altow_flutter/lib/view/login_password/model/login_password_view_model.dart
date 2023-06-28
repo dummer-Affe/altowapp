@@ -53,12 +53,12 @@ abstract class _LoginPasswordViewModelBase with Store {
             //    context: context);
             break;
           case ResponseType.noConnection:
-          errorPin = true;
+            errorPin = true;
             ErrorBottomSheet.listenConnection(
                 context: context, onConnected: () {});
             break;
           case ResponseType.unknown:
-          errorPin = true;
+            errorPin = true;
             //ErrorBottomSheet.unknownErr(context: context);
             break;
         }
@@ -80,9 +80,8 @@ abstract class _LoginPasswordViewModelBase with Store {
   Future<void> forgetPassword(BuildContext context) async {
     var tracker = RegistrationTracker.instance;
 
-    var response = await AppSettings.instance.otpService
-        .checkUserNecessarySendOtp(
-            OtpCheckerParameter.newPassword(mobilePhone: tracker.mobilePhone));
+    var response = await AppSettings.instance.otpService.sendOtp(
+        OtpCheckerParameter.newPassword(mobilePhone: tracker.mobilePhone));
     switch (response.responseType) {
       case ResponseType.hasData:
         tracker.forgetPassword(context: context);

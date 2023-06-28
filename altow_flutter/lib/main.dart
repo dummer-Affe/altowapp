@@ -13,7 +13,6 @@ bool testMode = false;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Figma.setup(deviceWidth: 375, deviceHeight: 812);
-
   AppUser.init;
   AppSettings.init();
   runApp(!testMode

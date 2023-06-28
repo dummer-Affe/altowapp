@@ -73,9 +73,8 @@ abstract class _OtpViewModelBase with Store {
     _changeLoading();
     late IResponseModel<dynamic, ProjectErrorModel?> response;
     if (registrationTracker.otpTarget == OtpType.renewPassword) {
-      response = await _otpService.checkUserNecessarySendOtp(
-          OtpCheckerParameter.newPassword(
-              mobilePhone: registrationTracker.mobilePhone));
+      response = await _otpService.sendOtp(OtpCheckerParameter.newPassword(
+          mobilePhone: registrationTracker.mobilePhone));
     } else {
       response = await _otpService.resendOtp(
           registrationTracker.otpTarget == OtpType.phone

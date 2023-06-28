@@ -95,26 +95,22 @@ class RegistrationTracker extends GetxController {
             }
             break;
           case ResponseType.errorModelWithData:
-            
             ErrorBottomSheet.customView(
                 title: "Something Went Wrong",
                 message: "Something went wrong while connecting our servers",
                 context: context);
             break;
           case ResponseType.errorModelWithoutData:
-         
             ErrorBottomSheet.customView(
                 title: "Something Went Wrong",
                 message: "Something went wrong while connecting our servers",
                 context: context);
             break;
           case ResponseType.noConnection:
-        
             ErrorBottomSheet.listenConnection(
                 context: context, onConnected: () {});
             break;
           case ResponseType.unknown:
-            
             ErrorBottomSheet.unknownErr(context: context);
             break;
         }
@@ -210,8 +206,7 @@ class RegistrationTracker extends GetxController {
       String? customErrorTitle,
       String? customErrorMessage,
       required BuildContext context}) async {
-    var response = await AppSettings.instance.otpService
-        .checkUserNecessarySendOtp(parameter);
+    var response = await AppSettings.instance.otpService.sendOtp(parameter);
     switch (response.responseType) {
       case ResponseType.hasData:
         return true;

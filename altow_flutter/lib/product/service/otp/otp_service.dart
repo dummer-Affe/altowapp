@@ -16,18 +16,17 @@ import 'otp_service_io.dart';
 
 class OTPService extends IOTPService {
   @override
-  Future<IResponseModel<OtpRequirementResponse?, ProjectErrorModel?>>
-      checkUserNecessarySendOtp(OtpCheckerParameter parameter) async {
+  Future<IResponseModel<OtpRequirementResponse?, ProjectErrorModel?>> sendOtp(
+      OtpCheckerParameter parameter) async {
     try {
       printDetail(
-          path: OtpPathEnum.checkUserNecessarySendOtp.fullPath,
+          path: OtpPathEnum.sendOtp.fullPath,
           parameter: parameter,
           method: RequestType.POST,
-          serviceName: "checkUserNecessarySendOtp");
+          serviceName: "sendOtp");
       final dio = Dio();
 
-      final response = await dio.post(
-          OtpPathEnum.checkUserNecessarySendOtp.fullPath,
+      final response = await dio.post(OtpPathEnum.sendOtp.fullPath,
           data: parameter.toJson());
       return ResponseModel<OtpRequirementResponse?, ProjectErrorModel?>(
           data: response.data != null
