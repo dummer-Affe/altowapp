@@ -17,6 +17,6 @@ extension GeneralPathExtensions on OtpPathEnum {
   }
 
   String get fullPath {
-    return 'http://194.163.188.242:9081$path';
+    return path;
   }
 }

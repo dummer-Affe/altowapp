@@ -275,6 +275,7 @@ class RegistrationTracker extends GetxController {
       return;
     }
     if (type == ProviderType.mobile) {
+      print(token);
       await AppUser.instance.login(
           informations:
               AuthUserInformations(mobilePhone: mobilePhone, email: email),

@@ -9,7 +9,7 @@ extension GeneralPathExtensions on GeneralPathEnum {
       case GeneralPathEnum.renewPassword:
         return '/renew-password';
       case GeneralPathEnum.login:
-        return '/login';
+        return '/login/version:2';
       case GeneralPathEnum.checkUser:
         return '/check-user';
     }

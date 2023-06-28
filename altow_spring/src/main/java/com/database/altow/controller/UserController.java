@@ -3,9 +3,12 @@ import com.database.altow.dto.AuthRequest;
 import com.database.altow.entity.Story;
 import com.database.altow.entity.UserInfo;
 import com.database.altow.entity.phoneNumber;
+import com.database.altow.exception.UserNotFoundException;
 import com.database.altow.service.JwtService;
 import com.database.altow.service.UserService;
+import org.hibernate.annotations.SortComparator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -87,7 +90,26 @@ public class UserController {
         }
 
     }
+    @GetMapping("/public/login/version:2")
+    public ResponseEntity<Map<String,Object>>  AuthAndGenerateTokenV2(@RequestBody AuthRequest authRequest) throws UserNotFoundException {
 
+        try {
 
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            authRequest.getUsername(),
+                            authRequest.getPassword()));
+            Map<String, Object> response = new HashMap<>();
+            response.put("token", jwtService.generateToken(authRequest.getUsername()));
+
+            return ResponseEntity.ok(response);
+
+        }catch (Exception e){
+
+            throw new UserNotFoundException();
+
+        }
+
+    }
 
 }

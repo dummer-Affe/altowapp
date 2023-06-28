@@ -33,6 +33,7 @@ class AppUser extends GetxController {
     AppSettings.instance.sharedPreferencesManager
         .setUserInformations(informations);
     await saveToken(token);
+    _loginProviderToken = token;
     _isUserLogged = true;
     _informations = informations;
     update();
