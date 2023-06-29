@@ -5,6 +5,12 @@ Altow full stack application that contains flutter and spring boot development.
 
 ## Latest Updates:
 
+### 30/06/2023, 01:25
+
+* Exceptions added to the Spring Application.
+* New Feature: Themes added, "dark" and "light" themes toggles added.
+* Visual improvements made. 
+
 ### 26/06/2023, 14:19  
 
 * Bug Fix: Problems that were preventing password renewal process have been fixed.
