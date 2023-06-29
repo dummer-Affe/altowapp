@@ -12,7 +12,7 @@ import '../../core/states/app_user/app_user.dart';
 import '../../core/states/app_user/auth_user.dart';
 import '../../product/init/enum/login_provider_type_enum.dart';
 import '../../product/init/extensions/response_model.dart';
-import '../../product/model/user_information/user_information.dart';
+import '../../product/model/user_login/user_information.dart';
 import '../../product/widgets/bottom_sheet/error_bottom_sheet.dart';
 import 'otp_type.dart';
 
