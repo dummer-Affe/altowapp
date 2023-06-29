@@ -26,21 +26,21 @@ class _HomeBaseViewState extends State<HomeBaseView> {
   @override
   void initState() {
     scrollController.bottomNavigationBar.tabListener(_onTap);
-    
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    
     return GetBuilder<AppSettings>(builder: (controller) {
+      print(controller.appearance.name);
       return ContextUpdater(
         child: WillPopScope(
           onWillPop: () async {
             return HomeBasePageController.instance.pop();
           },
           child: Scaffold(
-            appBar: const MyAppBar(),
+            appBar: MyAppBar(),
             body: GetBuilder<HomeBasePageController>(
               builder: (pagcontroller) => ListView(
                 controller: scrollController,
@@ -74,12 +74,13 @@ class _HomeBaseViewState extends State<HomeBaseView> {
                                   size: 30,
                                   color: pageController.pages.indexOf(page) ==
                                           pageController.currentIndex
-                                      ? AppColors.text
-                                      : AppColors.text.withOpacity(0.3)),
+                                      ? AppColors.bottomNavigationBarItemColor
+                                      : AppColors.bottomNavigationBarItemColor
+                                          .withOpacity(0.3)),
                               Text(
                                 page.getTitle,
                                 overflow: TextOverflow.ellipsis,
-                                style: AppFontsPanel.storyGiverStyle,
+                                style: AppFontsPanel.bottomSheetLabelText,
                               )
                             ],
                           ),
@@ -97,7 +98,6 @@ class _HomeBaseViewState extends State<HomeBaseView> {
   }
 
   void _onTap(index) {
-   
     HomeBasePageController.instance.navigateToIndex(index);
   }
 }

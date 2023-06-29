@@ -5,6 +5,7 @@ import '../app_settings/app_settings.dart';
 class AppColors {
   static Color get background => AppSettings.instance.appearance.background;
   static Color get secondary => AppSettings.instance.appearance.secondary;
+  static Color get buttonText => AppSettings.instance.appearance.buttonText;
   static List<Color> get button => AppSettings.instance.appearance.button;
   static Color get topLeftCornerCircle =>
       AppSettings.instance.appearance.topLeftCornerCircle;
@@ -15,6 +16,8 @@ class AppColors {
   static Color get searchHint => AppSettings.instance.appearance.searchHint;
   static Color get searchText => AppSettings.instance.appearance.searchText;
   static Color get jobsButton => AppSettings.instance.appearance.jobsButton;
+  static Color get bottomNavigationBarItemColor =>
+      AppSettings.instance.appearance.bottomNavigationBarItemColor;
   static Color get itemBackground =>
       AppSettings.instance.appearance.itemBackground;
   static Color get bottomSheetHintText =>

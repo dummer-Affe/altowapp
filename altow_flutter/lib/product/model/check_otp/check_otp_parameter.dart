@@ -7,7 +7,7 @@ part 'check_otp_parameter.g.dart';
 class CheckOtpParameter extends INetworkModel<CheckOtpParameter> {
   String? otpProvider, otpCode, searchValue, phoneNumber;
 
-  CheckOtpParameter({this.otpProvider, this.otpCode, this.searchValue});
+  CheckOtpParameter({this.otpProvider, this.otpCode, this.searchValue, this.phoneNumber});
 
   CheckOtpParameter.email({this.otpCode, String? email, this.phoneNumber})
       : otpProvider = 'EMAIL',

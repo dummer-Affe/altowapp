@@ -11,7 +11,8 @@ CheckOtpParameter _$CheckOtpParameterFromJson(Map<String, dynamic> json) =>
       otpProvider: json['otpProvider'] as String?,
       otpCode: json['otpCode'] as String?,
       searchValue: json['searchValue'] as String?,
-    )..phoneNumber = json['phoneNumber'] as String?;
+      phoneNumber: json['phoneNumber'] as String?,
+    );
 
 Map<String, dynamic> _$CheckOtpParameterToJson(CheckOtpParameter instance) =>
     <String, dynamic>{

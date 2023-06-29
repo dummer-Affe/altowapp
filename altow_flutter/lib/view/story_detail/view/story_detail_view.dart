@@ -37,7 +37,9 @@ class _StoryDetailViewState extends State<StoryDetailView> {
       child: GetBuilder<AppSettings>(builder: (controller) {
         return Scaffold(
             backgroundColor: AppColors.background,
-            appBar: const MyAppBar(),
+            appBar: MyAppBar(
+              showThemeSwitcher: false,
+            ),
             body: Observer(
               builder: (context) => switch (model.serviceStatus) {
                 ServiceStatus.failed => const Center(

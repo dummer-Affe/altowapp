@@ -1,3 +1,4 @@
+import 'package:altow_projects/core/states/app_colors/app_colors.dart';
 import 'package:figma_to_flutter/figma_to_flutter.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class OtpHelper extends StatelessWidget {
     var figma = Figma.of(context);
     return AnimatedContainer(
       duration: const Duration(milliseconds: 500),
-      color: const Color(0xFF313132),
+      color: AppColors.background,
       height: !showHelper ? 0 : figma.px(46, Axis.vertical),
       width: double.infinity,
       child: TextButton(

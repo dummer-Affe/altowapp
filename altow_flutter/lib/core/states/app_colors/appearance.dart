@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class Appearance {
   final String _name;
+  final Color _bottomNavigationBarItemColor;
   final Color _background;
+  final Color _buttonText;
   final Color _secondary;
   final List<Color> _button;
   final Color _topLeftCornerCircle;
@@ -31,6 +33,8 @@ class Appearance {
   final Color _jobsButton;
 
   String get name => _name;
+  Color get buttonText => _buttonText;
+  Color get bottomNavigationBarItemColor => _bottomNavigationBarItemColor;
   Color get background => _background;
   Color get secondary => _secondary;
   List<Color> get button => _button;
@@ -61,14 +65,16 @@ class Appearance {
 
   Appearance.light({
     String name = "light",
-    Color background = const Color(0xFF1B1C24),
+    Color background = const Color(0xFFFFFFFF),
+    Color bottomNavigationBarItemColor = const Color(0xFFFFFFFF),
     Color jobsButton = const Color(0xFFFF9800),
     Color secondary = const Color(0xFF6D59BD),
     List<Color> button = const [Color(0xFF6D59BD), Color(0xFF6145D0)],
-    Color topLeftCornerCircle = const Color(0xFF26272f),
-    Color text = const Color(0xFFF5F6FF),
-    Color icon = const Color(0xFFF5F6FF),
-    Color hintText = const Color.fromRGBO(245, 246, 255, 0.7),
+    Color topLeftCornerCircle = const Color.fromARGB(255, 227, 227, 227),
+    Color text = const Color(0xFF000000),
+    Color buttonText = const Color(0xFFFFFFFF),
+    Color icon = const Color.fromARGB(255, 0, 0, 0),
+    Color hintText = const Color(0xB1171717),
     Color searchBar = const Color(0xFFFAFAFA),
     Color searchHint = const Color(0xFFAEAEAE),
     Color searchText = const Color.fromRGBO(0, 0, 0, 0.8),
@@ -78,21 +84,23 @@ class Appearance {
     Color bottomSheetHintText3 = const Color.fromRGBO(0, 0, 0, 0.4),
     Color inactiveBtnColor = const Color.fromRGBO(131, 131, 150, 0.5),
     Color error = const Color(0xFFFF5494),
-    Color bottomSheetTitle = const Color(0xFF1B1C24),
+    Color bottomSheetTitle = const Color(0xFFC2C3CC),
     Color bottomSheetSearchBar = const Color.fromRGBO(14, 14, 14, 0.1),
     Color bottomSheetItemBg = const Color(0xFFC4C4C4),
-    Color bottomSheetText = const Color.fromRGBO(27, 28, 36, 0.7),
-    Color bottomSheetStick = const Color(0xFF1B1C24),
+    Color bottomSheetText = const Color.fromARGB(176, 254, 254, 255),
+    Color bottomSheetStick = const Color.fromARGB(255, 255, 255, 255),
     Color bottomErrorIconBg = const Color(0xFFCC0000),
     Color bottomErrorIcon = const Color(0xFFFAFAFA),
     Color bottomSheetBg = const Color(0xFFE1E1E1),
-    Color dateTimePickerBg = const Color(0xFFd1d3d9),
-    Color dateTimePickerItemBg = const Color(0xFFFAFAFA),
+    Color dateTimePickerBg = const Color(0xFF1E1E1E),
+    Color dateTimePickerItemBg = const Color.fromARGB(255, 0, 0, 0),
   })  : _name = name,
+        _bottomNavigationBarItemColor = bottomNavigationBarItemColor,
         _background = background,
         _jobsButton = jobsButton,
         _secondary = secondary,
         _button = button,
+        _buttonText = buttonText,
         _topLeftCornerCircle = topLeftCornerCircle,
         _text = text,
         _icon = icon,
@@ -120,11 +128,13 @@ class Appearance {
   Appearance.dark({
     String name = "dark",
     Color background = const Color(0xFF1B1C24),
+    Color bottomNavigationBarItemColor = const Color(0xFFFFFFFF),
     Color secondary = const Color(0xFF6D59BD),
     Color jobsButton = const Color(0xFFFF9800),
     List<Color> button = const [Color(0xFF6D59BD), Color(0xFF6145D0)],
     Color topLeftCornerCircle = const Color(0xFF26272f),
     Color text = const Color(0xFFF5F6FF),
+    Color buttonText = const Color.fromARGB(255, 255, 255, 255),
     Color icon = const Color(0xFFF5F6FF),
     Color hintText = const Color.fromRGBO(245, 246, 255, 0.7),
     Color searchBar = const Color(0xFFFAFAFA),
@@ -150,6 +160,8 @@ class Appearance {
         _background = background,
         _secondary = secondary,
         _button = button,
+        _buttonText = buttonText,
+        _bottomNavigationBarItemColor = bottomNavigationBarItemColor,
         _topLeftCornerCircle = topLeftCornerCircle,
         _text = text,
         _icon = icon,

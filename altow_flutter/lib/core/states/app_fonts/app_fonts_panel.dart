@@ -16,6 +16,7 @@ class AppFontsPanel {
       AppSettings.instance.figma.px(56, Axis.vertical);
   static TextStyle get errorStyle => AppSettings.instance.figma
       .style(fontSize: 14, color: AppColors.error, fontWeight: FontWeight.w400);
+
   static TextStyle get bigTitleStyle => AppSettings.instance.figma
       .style(fontSize: 28, color: AppColors.text, fontWeight: FontWeight.w700);
   static TextStyle get titleStyle => AppSettings.instance.figma
@@ -32,6 +33,15 @@ class AppFontsPanel {
 
   static TextStyle get storyGiverStyle => AppSettings.instance.figma.style(
       fontSize: 12, color: AppColors.hintText, fontWeight: FontWeight.w400);
+
+  static TextStyle get bigText => AppSettings.instance.figma.style(
+      fontSize: 40, color: AppColors.buttonText, fontWeight: FontWeight.w400);
+  static TextStyle get buttonText => AppSettings.instance.figma.style(
+      fontSize: 24, color: AppColors.buttonText, fontWeight: FontWeight.w400);
+  static TextStyle get smallText => AppSettings.instance.figma.style(
+      fontSize: 16, color: AppColors.buttonText, fontWeight: FontWeight.w400);
+  static TextStyle get bottomSheetLabelText => AppSettings.instance.figma.style(
+      fontSize: 12, color: AppColors.buttonText, fontWeight: FontWeight.w400);
 
   static TextStyle get verantulgenCategoryStyle => AppSettings.instance.figma
       .style(fontSize: 10, color: AppColors.text, fontWeight: FontWeight.w300);

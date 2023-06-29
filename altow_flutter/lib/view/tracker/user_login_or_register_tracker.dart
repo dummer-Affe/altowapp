@@ -17,6 +17,7 @@ import '../../product/widgets/bottom_sheet/error_bottom_sheet.dart';
 import 'otp_type.dart';
 
 class RegistrationTracker extends GetxController {
+
   String? mobilePhone, email, password, providerId, id;
   DateTime? dateTime;
   ProviderType type;
@@ -24,6 +25,7 @@ class RegistrationTracker extends GetxController {
   String? latestOtpCode;
   OtpType? otpTarget;
   UserInformation? userInformation;
+  
   RegistrationTracker(this.type) {
     _clean();
   }
@@ -48,8 +50,11 @@ class RegistrationTracker extends GetxController {
 
   /* ---------------------------------REGISTER PROCESS START----------------------------------- */
 
-  static void startRegistrationProcess(
-      {required ProviderType type, required Map<String, dynamic> data}) {
+   static void init(
+      {required ProviderType type,
+      required BuildContext context,
+      required bool withoutOtp,
+      required Map<String, dynamic> data}) {
     late RegistrationTracker instance;
     if (GetInstance().isRegistered<RegistrationTracker>()) {
       instance = RegistrationTracker.instance;
@@ -58,21 +63,17 @@ class RegistrationTracker extends GetxController {
     } else {
       instance = Get.put(RegistrationTracker(type));
     }
-    instance.isRegistration = true;
+    instance.isRegistration = false;
     if (type == ProviderType.mobile) {
-      instance.enterMobilePhone(
-          mobilePhone: data['mobilePhone'], context: data['context']);
-    } else {
-      instance.userInformation = data['userInformation'];
-      instance.providerId = data['providerId'];
-    }
-  }
-
-  void enterMobilePhone(
-      {required String mobilePhone, required BuildContext context}) {
-    this.mobilePhone = mobilePhone;
-    otpTarget = OtpType.phone;
-    NavigationService.push(NavigationEnums.otp);
+      instance.mobilePhone = data['mobilePhone'];
+      instance.email = data['email'];
+      if (withoutOtp) {
+        NavigationService.pushRemoveUntil(NavigationEnums.loginPassword);
+      } else {
+        instance.otpTarget = OtpType.phone;
+        NavigationService.push(NavigationEnums.otp);
+      }
+    } else {}
   }
 
   Future<void> setOtp(
@@ -145,7 +146,7 @@ class RegistrationTracker extends GetxController {
     if (type == ProviderType.mobile) {
       await AppUser.instance.register(
           AuthUserInformations(mobilePhone: mobilePhone, email: email));
-      RegistrationTracker.startLoginProcess(
+      RegistrationTracker.init(
           context: context,
           type: ProviderType.mobile,
           withoutOtp: true,
@@ -237,32 +238,7 @@ class RegistrationTracker extends GetxController {
 
   /* ---------------------------------LOGIN PROCESS START----------------------------------- */
 
-  static void startLoginProcess(
-      {required ProviderType type,
-      required BuildContext context,
-      required bool withoutOtp,
-      required Map<String, dynamic> data}) {
-    late RegistrationTracker instance;
-    if (GetInstance().isRegistered<RegistrationTracker>()) {
-      instance = RegistrationTracker.instance;
-      instance._clean();
-      instance.type = type;
-    } else {
-      instance = Get.put(RegistrationTracker(type));
-    }
-    instance.isRegistration = false;
-    if (type == ProviderType.mobile) {
-      instance.mobilePhone = data['mobilePhone'];
-      instance.email = data['email'];
-      if (withoutOtp) {
-        NavigationService.pushRemoveUntil(NavigationEnums.loginPassword);
-      } else {
-        instance.otpTarget = OtpType.phone;
-        NavigationService.push(NavigationEnums.otp);
-      }
-    } else {}
-  }
-
+ 
   Future<void> login(
       {required String? token, required BuildContext context}) async {
     if (token == null) {
@@ -281,7 +257,7 @@ class RegistrationTracker extends GetxController {
 
   Future<void> forgetPhone(BuildContext context) async {
     await AppUser.instance.logout();
-    NavigationService.pushRemoveUntil(NavigationEnums.login);
+ 
   }
 
   Future<void> forgetPassword({required BuildContext context}) async {
@@ -291,10 +267,6 @@ class RegistrationTracker extends GetxController {
     NavigationService.push(NavigationEnums.otp);
   }
 
-  Future<void> loginPassword(BuildContext context) async {
-    isRegistration = false;
-    NavigationService.pushRemoveUntil(NavigationEnums.loginPassword);
-  }
 
   Future<void> renewPassword(BuildContext context) async {
     NavigationService.pushRemoveUntil(NavigationEnums.loginPassword);

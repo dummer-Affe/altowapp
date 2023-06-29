@@ -1,5 +1,5 @@
 import 'package:figma_to_flutter/figma_to_flutter.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../../core/states/app_fonts/app_fonts_panel.dart';
@@ -39,6 +39,7 @@ class _OtpViewState extends State<OtpView> {
         title: "OTP Verification",
         text: model.titleText,
         submitButtonText: "Verify",
+    
         bottomWidget: OtpHelper(
           showHelper:
               MediaQuery.of(context).viewInsets.bottom == 0 ? false : true,

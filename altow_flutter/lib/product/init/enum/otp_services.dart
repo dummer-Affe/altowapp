@@ -1,5 +1,1 @@
-enum OtpPathEnum {
-  sendOtp,
-  checkOtp,
-  resendOtp,
-}
+enum OtpPathEnum { sendOtp, checkOtp, resendOtp }

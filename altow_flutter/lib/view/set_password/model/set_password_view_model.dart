@@ -9,7 +9,7 @@ import '../../../core/init/navigation/navigation_enums.dart';
 import '../../../core/states/app_settings/app_settings.dart';
 import '../../../product/init/extensions/response_model.dart';
 import '../../../product/model/renew_password/renew_password_parameter.dart';
-import '../../../product/service/general/general_service.dart';
+import '../../../product/service/public_general/general_service.dart';
 import '../../../product/widgets/bottom_sheet/error_bottom_sheet.dart';
 import '../../tracker/user_login_or_register_tracker.dart';
 import 'input_rule.dart';

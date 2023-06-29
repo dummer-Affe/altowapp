@@ -7,22 +7,14 @@ import 'package:get/get.dart';
 import 'auth_user.dart';
 
 class AppUser extends GetxController {
+
   AuthUserInformations? _informations;
-
   String? _loginProviderToken;
-
-  int? _invoicesCount;
-
   bool _isUserLogged = false;
 
   bool get isUserLoggedPreviously => loginProviderToken != null;
-
-  int? get invoicesCount => _invoicesCount;
-
   String? get loginProviderToken => _loginProviderToken;
-
   bool get isUserLogged => _isUserLogged;
-
   AuthUserInformations? get informations => _informations;
   static AppUser get init => Get.put(AppUser());
   static AppUser get instance => Get.find<AppUser>();

@@ -1,9 +1,10 @@
+import 'package:altow_projects/core/states/app_colors/app_colors.dart';
+import 'package:flutter/material.dart';
+
 import '/core/init/navigation/navigation_enums.dart';
 import '/core/init/navigation/navigation_service.dart';
 import '/core/states/app_fonts/app_fonts_panel.dart';
 import '/view/home_base/model/home_base_page_controller.dart';
-import 'package:flutter/material.dart';
-
 import '../../view/home_base/model/home_base_page.dart';
 
 class GoToButtonWidget extends StatelessWidget {
@@ -45,7 +46,9 @@ class GoToButtonWidget extends StatelessWidget {
             ),
             child: Text(
               buttonText,
-              style: AppFontsPanel.smallStyle,
+              style: TextStyle(
+                  fontSize: AppFontsPanel.smallStyle.fontSize,
+                  color: AppColors.buttonText),
             ),
           ),
         ),

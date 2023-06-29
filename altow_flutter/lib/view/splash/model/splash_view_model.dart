@@ -23,7 +23,7 @@ abstract class _SplashViewModelBase with Store {
 
   Future<void> checkAuth() async {
     if (await AppUser.instance.checkAuth()) {
-      RegistrationTracker.startLoginProcess(
+      RegistrationTracker.init(
           context: AppSettings.instance.context!,
           type: ProviderType.mobile,
           withoutOtp: true,

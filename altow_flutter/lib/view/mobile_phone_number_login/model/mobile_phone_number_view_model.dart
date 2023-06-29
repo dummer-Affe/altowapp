@@ -62,7 +62,7 @@ abstract class _MobilePhoneNumberViewModelBase with Store {
               OtpCheckerParameter(mobilePhone: mobilePhone.rawFullNumber),
           context: context);
       if (isSuccess) {
-        RegistrationTracker.startLoginProcess(
+        RegistrationTracker.init(
             context: context,
             type: ProviderType.mobile,
             withoutOtp: false,

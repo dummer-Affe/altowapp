@@ -34,7 +34,7 @@ class _LoginViewState extends State<LoginView> {
       child: GetBuilder<AppSettings>(builder: (controller) {
         var figma = Figma.of(context);
         return Scaffold(
-          backgroundColor: const Color(0xFF1B1C24),
+          backgroundColor: AppColors.background,
           body: Column(children: [
             figma.spacer(145, Axis.vertical),
             Row(
@@ -83,7 +83,7 @@ class _LoginViewState extends State<LoginView> {
                           height: AppFontsPanel.loginPhoneIcon,
                         ),
                         figma.spacer(9.35, Axis.horizontal),
-                        Text("Mobile Number", style: AppFontsPanel.buttonStyle)
+                        Text("Mobile Number", style: AppFontsPanel.smallText)
                       ],
                     ),
                   ),

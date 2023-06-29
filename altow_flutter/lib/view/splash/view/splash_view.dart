@@ -31,7 +31,7 @@ class _SplashViewState extends State<SplashView> {
           children: [
             Positioned.fill(
                 child: Container(
-              color: const Color(0xFF1B1C24),
+              color: Colors.white
             )),
             Observer(
               builder: (context) {

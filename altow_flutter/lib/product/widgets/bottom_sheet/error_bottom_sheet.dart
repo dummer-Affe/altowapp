@@ -78,7 +78,7 @@ class _ErrorBottomSheetViewState extends State<ErrorBottomSheetView> {
                 height: 5,
                 width: 134,
                 decoration: BoxDecoration(
-                    color: appearance.bottomSheetStick,
+                    color: appearance.searchText,
                     borderRadius: BorderRadius.circular(30)),
               ),
               figma.spacer(30, Axis.vertical),
@@ -91,7 +91,7 @@ class _ErrorBottomSheetViewState extends State<ErrorBottomSheetView> {
                   style: figma.style(
                       fontSize: 17,
                       fontWeight: FontWeight.w700,
-                      color: appearance.bottomSheetTitle,
+                      color: appearance.searchText,
                       fontFamily: 'SF Pro Display'),
                 ),
               ),
@@ -129,7 +129,7 @@ class _ErrorBottomSheetViewState extends State<ErrorBottomSheetView> {
                       style: figma.style(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: appearance.bottomSheetText,
+                          color: appearance.searchText,
                           fontFamily: 'SF Pro Display'),
                     ),
                   ),
@@ -158,7 +158,7 @@ class _ErrorBottomSheetViewState extends State<ErrorBottomSheetView> {
                     style: figma.style(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
-                        color: appearance.bottomSheetText,
+                        color: appearance.buttonText,
                         fontFamily: 'SF Pro Display')),
               ),
               figma.spacer(40, Axis.vertical),

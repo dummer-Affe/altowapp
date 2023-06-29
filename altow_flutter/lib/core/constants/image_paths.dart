@@ -1,6 +1,5 @@
-import '/core/states/app_settings/app_settings.dart';
-
 import '/core/extensions/asset_path_extensions.dart';
+import '/core/states/app_settings/app_settings.dart';
 
 class ImagePaths {
   static final String curve = 'curve'.toPNG;
@@ -42,10 +41,8 @@ class ImagePaths {
   static final String altowPic4 = 'altowAcademy_4'.toAltowAcademyJpg;
   static final String altowPic5 = 'altowAcademy_5'.toAltowAcademyJpg;
 
-  static final String altowLogoDark = 'altowBg'.toPNG;
-  static final String altowLogolight = 'altowBgWhite'.toPNG;
-  static final String altowLogoValid =
-      AppSettings.instance.appearance.name == "dark"
-          ? altowLogoDark
-          : altowLogolight;
+  static final String altowLogoLight = 'altowBg'.toPNG;
+  static final String altowLogoDark = 'altowBgWhite'.toPNG;
+  static String get altowLogoValid =>
+      AppSettings.instance.isDarkMode ? altowLogoDark : altowLogoLight;
 }

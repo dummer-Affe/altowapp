@@ -1,32 +1,33 @@
 import 'navigation_enums.dart';
 
 extension NavigationConstantsValue on NavigationEnums {
-  String get name {
-    switch (this) {
-      case NavigationEnums.login:
-        return 'login';
-      case NavigationEnums.homebase:
-        return 'homebase';
-      case NavigationEnums.dateOfBirth:
-        return 'dateOfBirth';
-      case NavigationEnums.loginPassword:
-        return 'loginPassword';
-      case NavigationEnums.mobilePhoneNumberLogin:
-        return 'mobilePhoneNumberLogin';
-      case NavigationEnums.otp:
-        return 'otp';
-      case NavigationEnums.registerEmail:
-        return 'registerEmail';
-      case NavigationEnums.setPassword:
-        return 'setPassword';
-      case NavigationEnums.storyDetail:
-        return 'storyDetail';
-      case NavigationEnums.splash:
-        return 'splash';
-      case NavigationEnums.webviewPage:
-        return 'webview';
-    }
-  }
+  
+//String get name {
+//  switch (this) {
+//    case NavigationEnums.login:
+//      return 'login';
+//    case NavigationEnums.homebase:
+//      return 'homebase';
+//    case NavigationEnums.dateOfBirth:
+//      return 'dateOfBirth';
+//    case NavigationEnums.loginPassword:
+//      return 'loginPassword';
+//    case NavigationEnums.mobilePhoneNumberLogin:
+//      return 'mobilePhoneNumberLogin';
+//    case NavigationEnums.otp:
+//      return 'otp';
+//    case NavigationEnums.registerEmail:
+//      return 'registerEmail';
+//    case NavigationEnums.setPassword:
+//      return 'setPassword';
+//    case NavigationEnums.storyDetail:
+//      return 'storyDetail';
+//    case NavigationEnums.splash:
+//      return 'splash';
+//    case NavigationEnums.webviewPage:
+//      return 'webview';
+//  }
+//}
 
   String get route {
     switch (this) {

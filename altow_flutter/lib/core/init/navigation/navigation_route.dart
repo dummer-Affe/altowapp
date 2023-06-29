@@ -18,9 +18,11 @@ import 'navigation_extentions.dart';
 
 class NavigationRoute {
   Route<dynamic> generateRoute(RouteSettings routeSettings) {
+    
     switch (getNavigationEnum(routeSettings.name)) {
       case NavigationEnums.splash:
         return _normalNavigate(const SplashView());
+
       case NavigationEnums.login:
         return _normalNavigate(const LoginView());
 

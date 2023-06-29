@@ -6,13 +6,14 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 import '/product/service/auth/auth_service.dart';
 import '/product/service/otp/otp_service.dart';
-import '../../../product/service/general/general_service.dart';
+import '../../../product/service/public_general/general_service.dart';
 import '../../../product/utility/shared_manager.dart';
 import '../../init/navigation/navigation_enums.dart';
 import '../../init/navigation/navigation_service.dart';
 import '../app_colors/appearance.dart';
 
 class AppSettings extends GetxController {
+
   AppSettings() {
     listenInternetConnection();
     _generalService = GeneralService();
@@ -21,19 +22,17 @@ class AppSettings extends GetxController {
   }
 
   late Appearance _appearance;
-
   late final GeneralService _generalService;
   late final OTPService _otpService;
-
   late final AuthService _authService;
-
   late SharedPreferencesManager _sharedPreferencesManager;
-
   BuildContext? _context;
-
   late bool _isDeviceConnected;
   NavigationEnums? currentPage;
   int pageStackCount = 1;
+  late Figma2Flutter figma;
+
+
 
   BuildContext? get context => _context;
   GeneralService get generalService => _generalService;
@@ -41,13 +40,15 @@ class AppSettings extends GetxController {
   AuthService get authService => _authService;
   bool get isDeviceConnected => _isDeviceConnected;
   Appearance get appearance => _appearance;
+  bool get isDarkMode => _appearance.name=="dark";
   bool get canPop => pageStackCount > 1;
   SharedPreferencesManager get sharedPreferencesManager =>
       _sharedPreferencesManager;
-
   static AppSettings get instance => Get.find<AppSettings>();
 
+
   Future<void> setup() async {
+  
     await initSharedReferences();
     String? appearanceName = getAppearanceFromShared() ?? "light";
     if (appearanceName == "light") {
@@ -61,7 +62,7 @@ class AppSettings extends GetxController {
     figma = Figma.of(context);
   }
 
-  late Figma2Flutter figma;
+
 
   void updateContext(BuildContext context) {
     _context = context;
@@ -112,4 +113,5 @@ class AppSettings extends GetxController {
     NavigationService.init;
     return Get.put(AppSettings());
   }
+
 }

@@ -1,10 +1,10 @@
-import '/core/states/app_colors/app_colors.dart';
-import '/core/states/app_fonts/app_fonts_panel.dart';
-import '/core/states/app_settings/app_settings.dart';
 import 'package:figma_to_flutter/figma_to_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '/core/states/app_colors/app_colors.dart';
+import '/core/states/app_fonts/app_fonts_panel.dart';
+import '/core/states/app_settings/app_settings.dart';
 import '../../core/constants/icon_paths.dart';
 import '../../core/constants/image_paths.dart';
 import '../../product/widgets/sized_button/sized_button.dart';
@@ -28,7 +28,7 @@ class BaseDesign extends StatelessWidget {
   final Gradient? gradient;
   final Color backgroundColor;
   final Widget? topRightIcon;
-  const BaseDesign({
+  BaseDesign({
     super.key,
     this.onBackButtonPressed,
     this.onSubmitButtonPressed,
@@ -39,7 +39,7 @@ class BaseDesign extends StatelessWidget {
     this.backBtnTopPosition = 56,
     this.gradient,
     this.backBtnLeftPadding = 17,
-    this.backgroundColor = const Color(0xFF1B1C24),
+    Color? backgroundColor,
     this.bottomWidget,
     this.padding,
     this.onWillPop,
@@ -58,7 +58,7 @@ class BaseDesign extends StatelessWidget {
     this.submitButtonText,
     this.submitButtonColor = const Color(0xFF6D59BD),
     required this.child,
-  });
+  }) : backgroundColor = backgroundColor ?? AppColors.background;
 
   @override
   Widget build(BuildContext context) {
@@ -96,8 +96,9 @@ class BaseDesign extends StatelessWidget {
                       child: Container(
                         width: figma.px(286, Axis.vertical),
                         height: figma.px(286, Axis.vertical),
-                        decoration: const BoxDecoration(
-                            color: Color(0xFF26272f), shape: BoxShape.circle),
+                        decoration: BoxDecoration(
+                            color: AppColors.topLeftCornerCircle,
+                            shape: BoxShape.circle),
                       ),
                     ),
                   listView ? listViewMode(context) : columViewMode(context),
@@ -213,7 +214,7 @@ class BaseDesign extends StatelessWidget {
                   }
                 },
                 child: Text(submitButtonText ?? "",
-                    style: AppFontsPanel.buttonStyle),
+                    style: AppFontsPanel.smallText),
               ),
             ),
           figma.spacer(bottomPadding, Axis.vertical),
@@ -281,7 +282,7 @@ class BaseDesign extends StatelessWidget {
                         }
                       },
                       child: Text(submitButtonText ?? "",
-                          style: AppFontsPanel.buttonStyle),
+                          style: AppFontsPanel.smallText),
                     ),
                   ),
                 figma.spacer(bottomPadding, Axis.vertical),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'navigation_enums.dart';
+import '../navigation_enums.dart';
 
 class RoutePage {
   NavigationEnums page;

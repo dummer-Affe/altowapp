@@ -91,4 +91,5 @@ class SharedPreferencesManager {
   Future<bool> removeItem(SharedKeys key) async {
     return (await preferences?.remove(key.name)) ?? false;
   }
+  
 }

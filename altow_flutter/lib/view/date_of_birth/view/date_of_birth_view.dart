@@ -1,8 +1,8 @@
-import '/core/states/app_colors/app_colors.dart';
 import 'package:figma_to_flutter/figma_to_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
+import '/core/states/app_colors/app_colors.dart';
 import '../../../core/constants/icon_paths.dart';
 import '../../../core/states/app_fonts/app_fonts_panel.dart';
 import '../../../product/utility/date_time_util.dart';
